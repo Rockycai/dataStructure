@@ -8,7 +8,7 @@ void TestList() {
 	SqList L;
 	
 	// 向列表中放MAXSIZE元素进行测试
-	for (int i = 0; i < MAXSIZE; i++) {
+	for (int i = 0; i < 10; i++) {
 		L.data[i] = 10 * i;
 		L.length++;
 	}
@@ -20,5 +20,8 @@ void TestList() {
 	PrintList(L);
 
 	printf("查找值为40所在的位置%d \n", LocateElem(L, 40));
+
+	ListInsert(&L, 2, 101);
+	PrintList(L);
 
 }

@@ -5,7 +5,7 @@
 #include "list.h"
 
 void InitList(SqList *L) {
-	
+		
 }
 
 int Length(SqList L) {
@@ -25,6 +25,16 @@ int GetElem(SqList L, int i) {
 }
 
 bool ListInsert(SqList *L, int i, ElemType e) {
+
+	if (i > L->length || i < 0)
+		return false;
+	
+	for (int j = L->length; j >= i; j--) {
+		L->data[j+1] = L->data[j];
+	}
+
+	L->data[i] = e;
+	L->length++;
 	return true;
 }
 
