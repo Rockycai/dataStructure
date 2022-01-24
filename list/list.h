@@ -28,5 +28,6 @@ void ListDelete(SqList *L, int i, ElemType *e);
 void PrintList(SqList L);
 bool Empty(SqList L);
 void DestroyList(SqList *L);
+void TestList(void);
 
 #endif /* LIST_H */

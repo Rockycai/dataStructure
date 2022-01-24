@@ -5,6 +5,9 @@
 #ifndef HEADER_H
 #define HEADER_H
 
+#include <stdio.h>
+#include <stdlib.h>
+
 #define MAXSIZE 100
 
 typedef int ElemType; 

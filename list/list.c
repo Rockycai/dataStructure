@@ -5,12 +5,13 @@
 #include "list.h"
 
 void InitList(SqList *L) {
-
+	L = (SqList *)malloc(sizeof(SqList));
+	if(!L) 
+		exit(1);
 }
 
 int Length(SqList L) {
-	
-	return 0;
+	return L.length;
 }
 
 int LocateElem(SqList L, ElemType e) {
@@ -19,8 +20,7 @@ int LocateElem(SqList L, ElemType e) {
 }
 
 int GetElem(SqList L, int i) {
-
-	return 0;
+	return L.data[i];
 }
 
 bool ListInsert(SqList *L, int i, ElemType e) {
@@ -32,7 +32,10 @@ void ListDelete(SqList *L, int i, ElemType *e) {
 }
 
 void PrintList(SqList L) {
-
+	for (int i = 0; i < L.length; i++)
+		printf("%d ", L.data[i]);
+	
+	printf("\n");
 }
 
 bool Empty(SqList L) {
@@ -41,5 +44,5 @@ bool Empty(SqList L) {
 }
 
 void DestroyList(SqList *L) {
-	//free(L)
+	free(L);
 }
