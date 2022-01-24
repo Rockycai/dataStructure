@@ -5,9 +5,7 @@
 #include "list.h"
 
 void InitList(SqList *L) {
-	L = (SqList *)malloc(sizeof(SqList));
-	if(!L) 
-		exit(1);
+	
 }
 
 int Length(SqList L) {
@@ -15,7 +13,10 @@ int Length(SqList L) {
 }
 
 int LocateElem(SqList L, ElemType e) {
-
+	for (int i = 0; i < L.length; i++) {
+		if (L.data[i] == e) 
+			return i + 1;	
+	}
 	return 0;
 }
 
@@ -44,5 +45,5 @@ bool Empty(SqList L) {
 }
 
 void DestroyList(SqList *L) {
-	free(L);
+	free(L->data);
 }
