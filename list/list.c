@@ -5,7 +5,9 @@
 #include "list.h"
 
 void InitList(SqList *L) {
-		
+	for (int i = 0; i < MAXSIZE; i++)
+		L->data[i] = 0;
+	L->length = 0;
 }
 
 int Length(SqList L) {
@@ -28,6 +30,9 @@ bool ListInsert(SqList *L, int i, ElemType e) {
 
 	if (i > L->length || i < 0)
 		return false;
+
+	if (L->length >= MAXSIZE)
+		return false;
 	
 	for (int j = L->length; j >= i; j--) {
 		L->data[j+1] = L->data[j];
@@ -38,8 +43,22 @@ bool ListInsert(SqList *L, int i, ElemType e) {
 	return true;
 }
 
-void ListDelete(SqList *L, int i, ElemType *e) {
+bool ListDelete(SqList *L, int i, ElemType *e) {
 
+	if (i > L->length || i < 0)
+		return false;
+
+	if (L->length >= MAXSIZE)
+		return false;	
+	
+	*e = L->data[i];
+
+	for (int j = i; j <= L->length; j++) {
+		L->data[j] = L->data[j+1];
+	}
+	L->length--;
+
+	return true;
 }
 
 void PrintList(SqList L) {
@@ -55,5 +74,6 @@ bool Empty(SqList L) {
 }
 
 void DestroyList(SqList *L) {
-	free(L->data);
+	memset(L->data, 0, sizeof(ElemType) * L->length);
+	L->length = 0;	
 }

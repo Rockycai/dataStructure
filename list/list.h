@@ -24,7 +24,7 @@ int Length(SqList L);
 int LocateElem(SqList L, ElemType e);
 int GetElem(SqList L, int i);
 bool ListInsert(SqList *L, int i, ElemType e);
-void ListDelete(SqList *L, int i, ElemType *e);
+bool ListDelete(SqList *L, int i, ElemType *e);
 void PrintList(SqList L);
 bool Empty(SqList L);
 void DestroyList(SqList *L);
