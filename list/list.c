@@ -69,7 +69,9 @@ void PrintList(SqList L) {
 }
 
 bool Empty(SqList L) {
-
+	if (L.length == 0) {
+		return true;
+	}
 	return false;
 }
 
