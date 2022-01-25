@@ -16,18 +16,30 @@ typedef struct SqList {
 // 动态存储定义
 typedef struct SeqList {
 	ElemType *data;
-	int length;
+	int MaxSize, length;
 } SeqList;
 
 void InitList(SqList *L);
-void PrintList(SqList L);
-void DestroyList(SqList *L);
-void TestList(void);
 int Length(SqList L);
 int LocateElem(SqList L, ElemType e);
 int GetElem(SqList L, int i);
 bool ListInsert(SqList *L, int i, ElemType e);
 bool ListDelete(SqList *L, int i, ElemType *e);
+void PrintList(SqList L);
 bool Empty(SqList L);
+void DestroyList(SqList *L);
+
+void InitSeqList(SeqList *L);
+int SeqLength(SeqList L);
+int LocateSeqElem(SeqList L, ElemType e);
+int GetSeqElem(SeqList L, int i);
+bool ListSeqInsert(SeqList *L, int i, ElemType e);
+bool ListSeqDelete(SeqList *L, int i, ElemType *e);
+void PrintSeqList(SeqList L);
+bool EmptySeq(SeqList L);
+void DestroySeqList(SeqList *L);
+
+void TestList_1(void);
+void TestList_2(void);
 
 #endif /* LIST_H */

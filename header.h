@@ -10,6 +10,7 @@
 #include <string.h>
 
 #define MAXSIZE 100
+#define INITSIZE 100
 
 typedef int ElemType; 
 
