@@ -41,5 +41,10 @@ void DestroySeqList(SeqList *L);
 
 void TestList_1(void);
 void TestList_2(void);
+SqList TestInitData();
+
+ElemType Min(SqList *L);
+
+void list_example_01(void);
 
 #endif /* LIST_H */

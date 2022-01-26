@@ -79,3 +79,16 @@ void DestroyList(SqList *L) {
 	memset(L->data, 0, sizeof(ElemType) * L->length);
 	L->length = 0;	
 }
+
+ElemType Min(SqList *L) {
+	ElemType min = L->data[0];
+	for (int i = 1; i < L->length; i++)
+	{
+		if (min > L->data[i]) 
+		{
+			min = L->data[i];
+		} 
+	}
+	return min;
+}
+

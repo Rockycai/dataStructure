@@ -1,0 +1,46 @@
+/**
+ * 例题 - 综合应用题
+ */
+
+#include "list.h"
+
+/**
+ * 第一题:
+ * 从顺序表中删除具有最小值的元素（假设唯一）并由函数返回被删除元素的值
+ * 空出的位置由最后一个元素填补，若顺序表为空则显示出错误信息并退出运行
+ */
+
+bool DeleteMinValue(SqList *L, int i, ElemType *e) {
+
+	if (Empty(*L))
+	{
+		printf("顺序表为空退出程序 \n");
+		exit(1);
+	}
+
+	if (i > L->length || i < 0)
+		return false;
+
+	if (L->length >= MAXSIZE)
+		return false;
+		
+	*e = L->data[i];
+
+	L->data[i] = L->data[L->length - 1];
+	L->data[L->length - 1] = 0;
+	L->length--;
+	return true;
+}
+
+void list_example_01() {
+	ElemType e;
+	SqList L = TestInitData();
+	printf("测试的原数组为: \n");
+	PrintList(L);
+	printf("\n");
+
+	printf("删除最小值后数组为: \n");
+	DeleteMinValue(&L, LocateElem(L,  Min(&L)) - 1, &e);
+	PrintList(L);
+	printf("删除元素为%d \n", e);
+}

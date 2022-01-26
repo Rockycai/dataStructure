@@ -4,6 +4,23 @@
 
 #include "list.h"
 
+SqList TestInitData() {
+	SqList L;
+	L.data[0] = 100;
+	L.data[1] = 70;
+	L.data[2] = 18;
+	L.data[3] = 61;
+	L.data[4] = 53;
+	L.data[5] = 88;
+	L.data[6] = 71;
+	L.data[7] = 64;
+	L.data[8] = 67;
+	L.data[9] = 59;
+
+	L.length = 10;
+	return L;
+}
+
 void TestList_1() {
 	SqList L;
 	ElemType e; // 用于保存删除掉元素的值
@@ -15,7 +32,7 @@ void TestList_1() {
 	printf("插入元素后 \n");
 	// 向列表中放10元素进行测试
 	for (int i = 0; i < 10; i++) {
-		L.data[i] = 10 * i;
+		L.data[i] = 10 * i + 1;
 		L.length++;
 	}
 
@@ -43,13 +60,13 @@ void TestList_1() {
 void TestList_2() {
 	SeqList L;
 	ElemType e;
-	
+
 	InitSeqList(&L);
 
 	printf("获取长度%d \n", SeqLength(L));
 
 	for (int i = 0; i < 10; i++) {
-		L.data[i] = 10 * i;
+		L.data[i] = 10 * i + 1;
 		L.length++;
 	}
 
