@@ -44,7 +44,9 @@ void TestList_2(void);
 SqList TestInitData();
 
 ElemType Min(SqList *L);
+void Reverse(SqList *L);
 
 void list_example_01(void);
+void list_example_02(void);
 
 #endif /* LIST_H */
