@@ -35,11 +35,11 @@ bool DeleteMinValue(SqList *L, int i, ElemType *e) {
 void list_example_01() {
 	ElemType e;
 	SqList L = TestInitData();
-	printf("测试的原数组为: \n");
-	PrintList(L);
-	printf("\n");
 
-	printf("删除最小值后数组为: \n");
+	printf("顺序表第一题 \n");
+	printf("原顺序表: ");
+	PrintList(L);
+	printf("删除后表: ");
 	DeleteMinValue(&L, LocateElem(L,  Min(&L)) - 1, &e);
 	PrintList(L);
 	printf("删除元素为%d \n", e);
@@ -65,9 +65,43 @@ void Reverse(SqList *L) {
 
 void list_example_02() {
 	SqList L = TestInitData();
+	printf("顺序表第二题 \n");
 	printf("原顺序表: ");
 	PrintList(L);
 	printf("逆置后表: ");
 	Reverse(&L);
 	PrintList(L);
+	printf("\n");
+}
+
+// ----------------------------------------------------------------
+/** 
+ * 第三题
+ * 对长度为n的顺序表L，编写一个时间复杂度为O(n)、空间复杂度为O(1)的算法，
+ * 该算法删除线性表中所有值为x的数据元素。
+ */
+
+void DeleteXValues(SqList *L, ElemType x) {
+	ElemType count = 0;
+	
+	for (int i = 0; i < L->length; i++)
+	{
+		if (L->data[i] != x) 
+		{
+			L->data[count] = L->data[i];
+			count++;
+		}
+	}
+	L->length = count;
+}
+
+void list_example_03() {
+	SqList L = TestInitData();
+	printf("顺序表第三题 \n");
+	printf("原顺序表: ");
+	PrintList(L);
+	printf("删除后表: ");
+	DeleteXValues(&L, 71);
+	PrintList(L);
+	printf("\n");
 }

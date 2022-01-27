@@ -7,7 +7,7 @@
 SqList TestInitData() {
 	SqList L;
 	L.data[0] = 100;
-	L.data[1] = 70;
+	L.data[1] = 71;
 	L.data[2] = 18;
 	L.data[3] = 61;
 	L.data[4] = 53;

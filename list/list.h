@@ -48,5 +48,6 @@ void Reverse(SqList *L);
 
 void list_example_01(void);
 void list_example_02(void);
+void list_example_03(void);
 
 #endif /* LIST_H */

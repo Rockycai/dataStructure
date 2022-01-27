@@ -15,7 +15,8 @@ int Length(SqList L) {
 }
 
 int LocateElem(SqList L, ElemType e) {
-	for (int i = 0; i < L.length; i++) {
+	for (int i = 0; i < L.length; i++) 
+	{
 		if (L.data[i] == e) 
 			return i + 1;	
 	}
@@ -34,7 +35,8 @@ bool ListInsert(SqList *L, int i, ElemType e) {
 	if (L->length >= MAXSIZE)
 		return false;
 	
-	for (int j = L->length; j >= i; j--) {
+	for (int j = L->length; j >= i; j--) 
+	{
 		L->data[j+1] = L->data[j];
 	}
 
@@ -53,7 +55,8 @@ bool ListDelete(SqList *L, int i, ElemType *e) {
 	
 	*e = L->data[i];
 
-	for (int j = i; j <= L->length; j++) {
+	for (int j = i; j <= L->length; j++) 
+	{
 		L->data[j] = L->data[j+1];
 	}
 	L->length--;
