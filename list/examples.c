@@ -105,3 +105,46 @@ void list_example_03() {
 	PrintList(L);
 	printf("\n");
 }
+
+// ----------------------------------------------------------------
+/**
+ * 第四题
+ * 从有顺序表中删除其值在给定值s与t之间(要求s<t)的所有元素，如果s或t不合理
+ * 或顺序表为空，则显示出错误信息并退出运行。
+ */
+
+bool DeleteRangeSAndT(SqList *L, ElemType s, ElemType t) {
+	ElemType e;
+
+	if ((s < 0) || (t < 0) || (s > t) || (L->length == 0)) 
+	{
+		printf("参数不符合s < t \n");
+		exit(1);
+	}
+
+	for (int i = 0; i < L->length; i++)
+	{
+		if ((s <= L->data[i]) && (L->data[i] <= t))
+		{
+			/**
+			 * 运行删除后顺序表中的元素会向左移动，对应的L->length也会减小
+			 * 当前这一位会被其后一位替换，但是循环时这一位已经遍历过了，所以
+			 * 需要在重新让当前位再次进入循环
+			 */
+			ListDelete(L, i, &e);
+			--i; 
+		}
+	}
+		
+	return true;
+}
+
+void list_example_04() {
+	SqList L = TestInitSeqData();
+	printf("顺序表第四题 \n");
+	printf("原顺序表: ");
+	PrintList(L);
+	printf("删除后表: ");
+	DeleteRangeSAndT(&L, 51, 83);
+	PrintList(L);
+}

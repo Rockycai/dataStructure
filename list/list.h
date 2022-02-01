@@ -41,7 +41,8 @@ void DestroySeqList(SeqList *L);
 
 void TestList_1(void);
 void TestList_2(void);
-SqList TestInitData();
+SqList TestInitData(void);
+SqList TestInitSeqData(void);
 
 ElemType Min(SqList *L);
 void Reverse(SqList *L);
@@ -49,5 +50,6 @@ void Reverse(SqList *L);
 void list_example_01(void);
 void list_example_02(void);
 void list_example_03(void);
+void list_example_04(void);
 
 #endif /* LIST_H */

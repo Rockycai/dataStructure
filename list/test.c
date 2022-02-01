@@ -21,6 +21,24 @@ SqList TestInitData() {
 	return L;
 }
 
+// 这是有序表的数据初始化
+SqList TestInitSeqData() {
+	SqList L;
+	L.data[0] = 26;
+	L.data[1] = 31;
+	L.data[2] = 42;
+	L.data[3] = 47;
+	L.data[4] = 50;
+	L.data[5] = 59;
+	L.data[6] = 66;
+	L.data[7] = 89;
+	L.data[8] = 91;
+	L.data[9] = 99;
+
+	L.length = 10;
+	return L;
+}
+
 void TestList_1() {
 	SqList L;
 	ElemType e; // 用于保存删除掉元素的值
