@@ -109,11 +109,11 @@ void list_example_03() {
 // ----------------------------------------------------------------
 /**
  * 第四题
- * 从有顺序表中删除其值在给定值s与t之间(要求s<t)的所有元素，如果s或t不合理
+ * 从有序顺序表中删除其值在给定值s与t之间(要求s<t)的所有元素，如果s或t不合理
  * 或顺序表为空，则显示出错误信息并退出运行。
  */
 
-bool DeleteRangeSAndT(SqList *L, ElemType s, ElemType t) {
+bool DeleteRangeSAndT_1(SqList *L, ElemType s, ElemType t) {
 	ElemType e;
 
 	if ((s < 0) || (t < 0) || (s > t) || (L->length == 0)) 
@@ -145,6 +145,49 @@ void list_example_04() {
 	printf("原顺序表: ");
 	PrintList(L);
 	printf("删除后表: ");
-	DeleteRangeSAndT(&L, 51, 83);
+	DeleteRangeSAndT_1(&L, 51, 83);
 	PrintList(L);
+	printf("\n");
+}
+
+// ----------------------------------------------------------------
+/**
+ * 第五题
+ * 从顺序表中删除其值在给定值s与t之间（包含s和t，要求s<t）的所有元素，如果
+ * s或t不合理或顺序表为空，则显示出错信息并退出
+ */
+
+void DeleteRangeSAndT_2(SqList *L, ElemType s, ElemType t) {
+	
+	ElemType e;
+	SqList Q; // 用于存放符合范围的数组
+	InitList(&Q); 
+
+	if ((s < 0) || (t < 0) || (s > t) || (L->length == 0)) 
+	{
+		printf("参数不符合s < t \n");
+		exit(1);
+	}
+
+	for (int i = 0; i < L->length; i++) 
+	{
+		if ((s <= L->data[i]) && (L->data[i] <= t))
+			add(&Q, L->data[i]);
+	}
+
+	for (int j = 0; j < Q.length; j++)
+	{
+		ListDelete(L, LocateElem(*L, Q.data[j]) - 1, &e);
+	}
+}
+
+void list_example_05() {
+	SqList L = TestInitData();
+	printf("顺序表第五题 \n");
+	printf("原顺序表: ");
+	PrintList(L);
+	printf("删除后表: ");
+	DeleteRangeSAndT_2(&L, 20, 60);
+	PrintList(L);
+	// printf("\n");
 }

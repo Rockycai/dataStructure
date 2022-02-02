@@ -95,3 +95,8 @@ ElemType Min(SqList *L) {
 	return min;
 }
 
+void add(SqList *L, ElemType e) {
+	int length = Length(*L);
+	ListInsert(L, length, e);
+}
+

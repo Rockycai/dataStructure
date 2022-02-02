@@ -106,3 +106,13 @@ void TestList_2() {
 	printf("销毁空间 \n");
 	DestroySeqList(&L);
 }
+
+void TestList_3() {
+	SqList L;
+	for (int i = 0; i < 10; i++) 
+		add(&L, i * 10);
+
+	add(&L, 100);
+
+	PrintList(L);
+}

@@ -29,6 +29,9 @@ void PrintList(SqList L);
 bool Empty(SqList L);
 void DestroyList(SqList *L);
 
+// 在顺序表末尾添加元素
+void add(SqList *L, ElemType e);
+
 void InitSeqList(SeqList *L);
 int SeqLength(SeqList L);
 int LocateSeqElem(SeqList L, ElemType e);
@@ -39,8 +42,12 @@ void PrintSeqList(SeqList L);
 bool EmptySeq(SeqList L);
 void DestroySeqList(SeqList *L);
 
+/**
+ * 测试用列 
+ */
 void TestList_1(void);
 void TestList_2(void);
+void TestList_3(void);
 SqList TestInitData(void);
 SqList TestInitSeqData(void);
 
@@ -51,5 +58,6 @@ void list_example_01(void);
 void list_example_02(void);
 void list_example_03(void);
 void list_example_04(void);
+void list_example_05(void);
 
 #endif /* LIST_H */
