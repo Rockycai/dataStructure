@@ -50,6 +50,7 @@ void TestList_2(void);
 void TestList_3(void);
 SqList TestInitData(void);
 SqList TestInitSeqData(void);
+SqList TestInitData_1(void);
 
 ElemType Min(SqList *L);
 void Reverse(SqList *L);
@@ -59,5 +60,6 @@ void list_example_02(void);
 void list_example_03(void);
 void list_example_04(void);
 void list_example_05(void);
+void list_example_06(void);
 
 #endif /* LIST_H */

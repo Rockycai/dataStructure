@@ -157,11 +157,17 @@ void list_example_04() {
  * s或t不合理或顺序表为空，则显示出错信息并退出
  */
 
+/**
+ * 这里解题思路和书本答案差距较大。这里我使用一个临时空间用来存储符合元素的
+ * 值，符合要求就把元素插入数组尾部，在遍历临时数组和顺序表中的值做对比合适
+ * 就删除，我这里因为用的都是已经实现的算法，里面循环比较多，算法时间复杂度
+ * 和空间复杂度都高于书中给的答案对效率有要求的话建议书中答案来实现。 
+ */
 void DeleteRangeSAndT_2(SqList *L, ElemType s, ElemType t) {
 	
 	ElemType e;
 	SqList Q; // 用于存放符合范围的数组
-	InitList(&Q); 
+	InitList(&Q); // 必须要初始化不如会出现垃圾值
 
 	if ((s < 0) || (t < 0) || (s > t) || (L->length == 0)) 
 	{
@@ -181,13 +187,73 @@ void DeleteRangeSAndT_2(SqList *L, ElemType s, ElemType t) {
 	}
 }
 
+// 书中算法实现
+bool Del_s_t(SqList *L, ElemType s, ElemType t) {
+	int k = 0;
+	if (L->length == 0 || s >= t)
+		return false;
+	
+	for (int i = 0; i < L->length; i++)
+	{
+		if (L->data[i] >= s && L->data[i] <= t)
+			k++;
+		else
+			L->data[i-k] = L->data[i];
+	}
+
+	L->length-=k;
+	
+	return true;
+}
+
 void list_example_05() {
 	SqList L = TestInitData();
+	SqList Q = TestInitData();
 	printf("顺序表第五题 \n");
 	printf("原顺序表: ");
 	PrintList(L);
-	printf("删除后表: ");
+	printf("删除后表- \n");
+	printf("算法1: ");
 	DeleteRangeSAndT_2(&L, 20, 60);
 	PrintList(L);
-	// printf("\n");
+	printf("算法2: ");
+	Del_s_t(&Q, 20, 60);
+	PrintList(Q);
+	printf("\n");
+}
+
+// ----------------------------------------------------------------
+/**
+ * 第六题
+ * 从有序顺序表中删除所有其值重复的元素，使表中所有元素的值均不同。
+ */
+
+bool DeleteDuplicateElements(SqList *L) {
+
+	ElemType e;
+
+	if (L->length == 0)
+		return false;
+	
+	for (int i = 0; i < L->length; i++) 
+	{
+		if (L->data[i] == L->data[i + 1]) 
+		{
+			ListDelete(L, i, &e);
+			--i;
+		}
+	}
+
+	return true;
+}
+
+void list_example_06() {
+	SqList L = TestInitData_1();
+	printf("顺序表第六题 \n");
+	printf("原顺序表: ");
+	PrintList(L);
+	printf("删除后表: ");
+	DeleteDuplicateElements(&L);
+	PrintList(L);
+	printf("\n");
 }
