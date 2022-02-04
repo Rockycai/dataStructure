@@ -140,7 +140,7 @@ bool DeleteRangeSAndT_1(SqList *L, ElemType s, ElemType t) {
 }
 
 void list_example_04() {
-	SqList L = TestInitSeqData();
+	SqList L = TestInitSeqData_1();
 	printf("顺序表第四题 \n");
 	printf("原顺序表: ");
 	PrintList(L);
@@ -255,5 +255,54 @@ void list_example_06() {
 	printf("删除后表: ");
 	DeleteDuplicateElements(&L);
 	PrintList(L);
+	printf("\n");
+}
+
+// ----------------------------------------------------------------
+/**
+ * 第七题
+ * 将两个有序顺序表合并为一个新的有序顺序表，并由函数返回结果顺序表
+ */
+
+SqList merge(SqList S, SqList T) {
+	SqList L;
+
+	if (S.length + T.length > MAXSIZE)
+		exit(1);
+
+	int i = 0;
+	int j = 0;
+	int k = 0;
+
+	while(i < S.length && j < T.length) 
+	{
+		if (S.data[i] <= T.data[j])
+			L.data[k++] = S.data[i++];
+		else
+			L.data[k++] = T.data[j++]; 
+	}
+
+	while (i < S.length)
+		L.data[k++] = S.data[i++];
+	
+	while (j < T.length)
+		L.data[k++] = T.data[j++];
+
+	L.length = k;
+	
+	return L;	
+}
+
+void list_example_07() {
+	SqList L = TestInitSeqData_1();
+	SqList Q = TestInitSeqData_2();
+	printf("顺序表第七题 \n");
+	printf("原顺序表1: ");
+	PrintList(L);
+	printf("原顺序表2: ");
+	PrintList(Q);
+	printf("合并顺序表: ");
+	SqList R = merge(L, Q);
+	PrintList(R);
 	printf("\n");
 }

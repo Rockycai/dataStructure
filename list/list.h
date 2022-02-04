@@ -49,7 +49,8 @@ void TestList_1(void);
 void TestList_2(void);
 void TestList_3(void);
 SqList TestInitData(void);
-SqList TestInitSeqData(void);
+SqList TestInitSeqData_1(void);
+SqList TestInitSeqData_2(void);
 SqList TestInitData_1(void);
 
 ElemType Min(SqList *L);
@@ -61,5 +62,6 @@ void list_example_03(void);
 void list_example_04(void);
 void list_example_05(void);
 void list_example_06(void);
+void list_example_07(void);
 
 #endif /* LIST_H */

@@ -22,7 +22,7 @@ SqList TestInitData() {
 }
 
 // 这是有序表的数据初始化
-SqList TestInitSeqData() {
+SqList TestInitSeqData_1() {
 	SqList L;
 	L.data[0] = 26;
 	L.data[1] = 31;
@@ -34,6 +34,23 @@ SqList TestInitSeqData() {
 	L.data[7] = 89;
 	L.data[8] = 91;
 	L.data[9] = 99;
+
+	L.length = 10;
+	return L;
+}
+
+SqList TestInitSeqData_2() {
+	SqList L;
+	L.data[0] = 27;
+	L.data[1] = 32;
+	L.data[2] = 43;
+	L.data[3] = 49;
+	L.data[4] = 52;
+	L.data[5] = 59;
+	L.data[6] = 65;
+	L.data[7] = 83;
+	L.data[8] = 94;
+	L.data[9] = 96;
 
 	L.length = 10;
 	return L;

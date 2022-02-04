@@ -17,5 +17,7 @@ int main(int argc, char **argv) {
 	list_example_04();
 	list_example_05();
 	list_example_06();
+	list_example_07();
+	
 	return 0;
 }
