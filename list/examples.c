@@ -315,12 +315,9 @@ void list_example_07() {
  * 的前面
  */
 
-void ReverseArray(SqList *array) {
-	//printf("Reverse %d\n", array[0].length);
+SqList ReverseArray(SqList *array) {
 	SqList L;
 	InitList(&L);
-
-	printf("Reverse %d\n", (array + 1)->data[0]);
 
 	for (int i = 0; i < (array + 1)->length; i++)
 	{
@@ -331,12 +328,24 @@ void ReverseArray(SqList *array) {
 	{
 		add(&L, array->data[j]);
 	}	
+
+	return L;
 }
 
 void list_example_08() {
 	SqList L = TestInitSeqData_1();
 	SqList Q = TestInitSeqData_2();	
 	SqList R[2] = {L, Q};
-	ReverseArray(R);
+
+	printf("顺序表第八题 \n");
+	printf("原顺序表1: ");
+	PrintList(L);
+	printf("原顺序表2: ");
+	PrintList(Q);
+	printf("合并顺序表: ");
+	SqList r = ReverseArray(R);
+	PrintList(r);
+	printf("\n");
+
 }
 
