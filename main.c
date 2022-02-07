@@ -10,7 +10,7 @@ int main(int argc, char **argv) {
 	// TestList_2(); /* 调用创建列表测试文件 */
 	// TestList_3(); /* 调用创建列表测试文件 */
 
-	// 列表第一题
+	// 列表题
 	list_example_01();
 	list_example_02();
 	list_example_03();
@@ -18,6 +18,7 @@ int main(int argc, char **argv) {
 	list_example_05();
 	list_example_06();
 	list_example_07();
+	list_example_08();
 	
 	return 0;
 }

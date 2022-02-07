@@ -306,3 +306,37 @@ void list_example_07() {
 	PrintList(R);
 	printf("\n");
 }
+
+// ----------------------------------------------------------------
+/**
+ * 第八题
+ * 已知在一维数组A[m+n]中依次存放两个线性表(a1,a2,...,am)和(b1,b2,...,bn)
+ * 编写一个函数，将数组中两个顺序表的位置互换，即将(b1,b2,...,bn)放在(a1,a2,...,am)
+ * 的前面
+ */
+
+void ReverseArray(SqList *array) {
+	//printf("Reverse %d\n", array[0].length);
+	SqList L;
+	InitList(&L);
+
+	printf("Reverse %d\n", (array + 1)->data[0]);
+
+	for (int i = 0; i < (array + 1)->length; i++)
+	{
+		add(&L, (array + 1)->data[i]);
+	}
+
+	for (int j = 0; j < array->length; j++)
+	{
+		add(&L, array->data[j]);
+	}	
+}
+
+void list_example_08() {
+	SqList L = TestInitSeqData_1();
+	SqList Q = TestInitSeqData_2();	
+	SqList R[2] = {L, Q};
+	ReverseArray(R);
+}
+

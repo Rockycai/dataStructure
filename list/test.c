@@ -50,9 +50,8 @@ SqList TestInitSeqData_2() {
 	L.data[6] = 65;
 	L.data[7] = 83;
 	L.data[8] = 94;
-	L.data[9] = 96;
 
-	L.length = 10;
+	L.length = 9;
 	return L;
 }
 
