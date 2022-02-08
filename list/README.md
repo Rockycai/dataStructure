@@ -64,3 +64,48 @@ typedef struct SeqList {
 ## 心情
 我们要飞到那遥远地方 看一看
 这世界并非那么凄凉
+
+### 例题
+第一题:
+
+从顺序表中删除具有最小值的元素（假设唯一）并由函数返回被删除元素的值空出的位置由最后一个元素填补，若顺序表为空则显示出错误信息并退出运行
+
+```c
+bool DeleteMinValue(SqList *L, int i, ElemType *e) {
+
+	if (Empty(*L))
+	{
+		printf("顺序表为空退出程序 \n");
+		exit(1);
+	}
+
+	if (i > L->length || i < 0)
+		return false;
+
+	if (L->length >= MAXSIZE)
+		return false;
+		
+	*e = L->data[i];
+
+	L->data[i] = L->data[L->length - 1];
+	L->data[L->length - 1] = 0;
+	L->length--;
+	return true;
+}
+```
+
+第二题:
+
+设计一个高效算法，将顺序表L的所有元素逆置，要求算法的空间复杂度为O(1)
+```c
+void Reverse(SqList *L) {
+	ElemType temp;
+
+	for (int i = 0; i < L->length/2; i++) 
+	{
+		temp = L->data[i];
+		L->data[i] = L->data[L->length - i - 1];
+		L->data[L->length - i - 1] = temp;
+	}
+}
+```

@@ -64,5 +64,6 @@ void list_example_05(void);
 void list_example_06(void);
 void list_example_07(void);
 void list_example_08(void);
+void list_example_09(void);
 
 #endif /* LIST_H */

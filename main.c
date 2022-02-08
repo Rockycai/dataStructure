@@ -19,6 +19,7 @@ int main(int argc, char **argv) {
 	list_example_06();
 	list_example_07();
 	list_example_08();
+	list_example_09();
 	
 	return 0;
 }

@@ -346,6 +346,57 @@ void list_example_08() {
 	SqList r = ReverseArray(R);
 	PrintList(r);
 	printf("\n");
-
 }
 
+// ----------------------------------------------------------------
+/**
+ * 第九题
+ * 线性表(a1,a2,a3,...,an)中的元素递增有序且按顺序存储于计算机内。要求
+ * 设计算法，完成用最少时间在表中查找数值为x的元素，若找到则将其与后继元素
+ * 位置交换，若找不到则将其插入表中并使表中元素仍递增有序。
+ */
+
+/** 书中使用的折半查找算法效率上是高于我这里实现的算法，书中算法更接近本题
+ * 答案。我这里的时间复杂度为O(n)书中是O(logn)
+ */
+
+void FindValueIsInTable(SqList *L, ElemType e) {
+
+	ElemType temp;
+	int i;
+
+	int x = LocateElem(*L, e); // 设查找位置为x
+	
+	if ( x == 0)
+	{
+		for (i = 0; i < L->length; i++)
+		{
+			if ((L->data[i] < e) && (e < L->data[i + 1]))
+			{
+				i += 1;
+				break;
+			}
+		}
+
+		ListInsert(L, i, e);
+
+		return;
+	} 
+
+	x-=1; // 元素位置需要减1
+	
+	temp = L->data[x];
+	L->data[x] = L->data[x + 1];
+	L->data[x + 1] = temp;
+}
+
+void list_example_09() {
+	SqList L = TestInitSeqData_1();
+	printf("顺序表第九题 \n");
+	printf("原顺序表: ");
+	PrintList(L);
+	printf("删除后表: ");
+	FindValueIsInTable(&L, 50);
+	PrintList(L);
+	printf("\n");
+}
