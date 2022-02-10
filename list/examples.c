@@ -429,11 +429,105 @@ void Converse(int R[], int n, int p) {
 void list_example_10() {
 	int array[5] = {1, 2, 3, 4, 5};
 	printf("顺序表第十题 \n");
-	Converse(array, 1, 3);
-	for (int i = 0; i < 5; i++)
-	{
+	printf("原顺序表: ");
+	for (int i = 0; i < 5; i++) 
 		printf("%d ", array[i]);
+	printf("\n");
+
+	Converse(array, 5, 3);
+	printf("删除后表: ");
+	for (int i = 0; i < 5; i++)
+		printf("%d ", array[i]);
+	printf("\n\n");
+}
+
+// ----------------------------------------------------------------
+/**
+ * 第十一题（2011统考真题）
+ * 一个长度为L(L >= 1)的升序序列S,处在第[L/2]个位置的数称为S的中位数。
+ * 例如，若序列S1=(11,13,15,17,19),则S1的中位数是15，两个序列的中位
+ * 数是包含它们所有元素的升序序列的中位数。例如，若S2=(2,4,6,8,20),则
+ * S1和S2的中位数是11。现在有两个等长升序序列A和B，设计一个在时间和空间
+ * 两个方面都尽可能高的算法，找出两个序列A和B的中位数。
+ */
+
+int M_Search(int A[], int B[], int n)
+{
+	int s1 = 0, d1 = n - 1, m1, s2 = 0, d2 = n -1, m2;
+	while (s1 != d1 || s2 != d2)
+	{
+		m1 = (s1 + d1) / 2;
+		m2 = (s2 + d2) / 2;
+		if (A[m1] == B[m2])
+			return A[m1];
+		if (A[m1] < B[m2])
+		{
+			if ((s1 + d1) % 2 == 0)
+			{
+				s1 = m1;
+				d2 = m2;
+			}
+			else 
+			{
+				s1 = m1 + 1;
+				d2 = m2;
+			}
+		}
+		else 
+		{
+			if ((s2 + d2) % 2 == 0)
+			{
+				d1 = m1;
+				s2 = m2;
+			}
+			else
+			{
+				d1 = m1;
+				s2 = m2 + 1;
+			}
+		}
 	}
-	
+	return A[s1] < B[s2] ? A[s1]:B[s2];
+}
+
+ElemType SearchMiddleValue(SqList L, SqList Q) {
+	ElemType middle;
+	SqList R = merge(L, Q);
+	middle = ((L.length - 1) + (Q.length - 1)) / 2;
+	return  R.data[middle];
+}
+
+// 书中答案在效率上明显高于自己写的答案，建议熟读书中答案
+void list_example_11() {
+	SqList L;
+	SqList Q;
+
+	InitList(&L);
+	L.data[0] = 11;
+	L.data[1] = 13;
+	L.data[2] = 15;
+	L.data[3] = 17;
+	L.data[4] = 19;
+	L.length = 5;
+
+	InitList(&Q);
+	Q.data[0] = 2;
+	Q.data[1] = 4;
+	Q.data[2] = 6;
+	Q.data[3] = 8;
+	Q.data[4] = 20;
+	Q.length = 5;
+
+	printf("顺序表第十题 \n");
+	printf("原顺序表1: ");
+	PrintList(L);
+	printf("原顺序表2: ");
+	PrintList(Q);
+	printf("非书中中位数: %d \n", SearchMiddleValue(L, Q));
+
+	// 书中答案	
+	int A[] = {11,13,15,17,19};
+	int B[] = {2,4,6,8,20};
+	printf("书中答案中位数 %d\n", M_Search(A, B, 5));
 	printf("\n");
 }
