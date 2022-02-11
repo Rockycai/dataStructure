@@ -531,3 +531,64 @@ void list_example_11() {
 	printf("书中答案中位数 %d\n", M_Search(A, B, 5));
 	printf("\n");
 }
+
+// ----------------------------------------------------------------
+/**
+ * 第十二题（2013统考真题）
+ * 已知一个整数序列A = ( a0，a1，...an-1),其中0≤ai＜n（0≤i＜n）。若
+ * 存在ap1=ap2=···=apm=x，且m>n/2（0＜pk＜n，1≤k≤m），则称x为A的主
+ * 元素。例如A=（0,5,5,3,5,7,5,5），则5为主元素；又如A = ( 0,5,5,3,5,1,5 ,7 )，
+ * 则A中没有主元素。 假设A中的几个元素保存在一个一维数组中，请设计一个尽可能高效的算法，
+ * 找出A的主元素。若存在主元素，则输出该元素；否则输出-1
+ */
+
+int Majority(int *A, int n) {
+	int i, c, count = 1;
+	c = *A;
+
+	for (int i = 1; i < n; i++)
+	{
+		if (A[i] == c)
+			count++;
+		else 
+		{
+			if (count > 0)
+			{
+				count--;
+			}
+			else
+			{
+				c = A[i];
+				count = 1;
+			}
+		}
+	}
+	if (count > 0)
+		for (i = count = 0; i < n; i++)
+			if (A[i] == c)
+				count++;
+
+	if (count > n/2)
+		return c;
+	else
+		return -1;
+}
+
+void list_example_12() {
+	int A[8] = {0, 5, 5, 3, 5, 7, 5, 5};
+	int B[8] = {0, 5, 5, 3, 5, 1, 5, 7};
+
+	printf("顺序表第十一题 \n");
+	printf("原顺序表A: ");
+	for (int i = 0; i < sizeof(A)/sizeof(int); i++) 
+		printf("%d ", A[i]);
+	printf("\n");
+	printf("原顺序表B: ");
+	for (int i = 0; i < sizeof(B)/sizeof(int); i++) 
+		printf("%d ", B[i]);
+	printf("\n");
+	printf("A主元素为: %d\n", Majority(A, sizeof(A)/sizeof(int)));
+	printf("B主元素为: %d\n", Majority(B, sizeof(B)/sizeof(int)));
+	printf("\n");
+
+}
