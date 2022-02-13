@@ -578,7 +578,7 @@ void list_example_12() {
 	int A[8] = {0, 5, 5, 3, 5, 7, 5, 5};
 	int B[8] = {0, 5, 5, 3, 5, 1, 5, 7};
 
-	printf("顺序表第十一题 \n");
+	printf("顺序表第十二题 \n");
 	printf("原顺序表A: ");
 	for (int i = 0; i < sizeof(A)/sizeof(int); i++) 
 		printf("%d ", A[i]);
@@ -590,5 +590,47 @@ void list_example_12() {
 	printf("A主元素为: %d\n", Majority(A, sizeof(A)/sizeof(int)));
 	printf("B主元素为: %d\n", Majority(B, sizeof(B)/sizeof(int)));
 	printf("\n");
+}
 
+// ----------------------------------------------------------------
+/**
+ * 第十三题（2018统考真题）
+ * 给定一个含n（n>=1）个整数的数组，请设计一个在时间上尽可能高效的算法，找
+ * 出数组中未出现的最小正整数。例如，数组{-5,3,2,3}中未出现的最小正整数是
+ * 1；数组{1,2,3}中未出现的最小正整数是4。
+ */
+
+int findMissMin(int A[], int n)
+{
+	int i, *B;
+	B = (int *)malloc(sizeof(int) * n);
+	memset(B, 0, sizeof(int) * n);
+	for (i = 0; i < n; i++)
+		if (A[i] > 0 && A[i] <= n)
+			B[A[i] - 1] = 1;
+	
+	for (i = 0; i < n; i++)
+		if (B[i] == 0)
+			break;
+	
+	return i + 1;
+}
+
+void list_example_13() {
+	int A[4] = {-5, 3, 2, 3}; 
+	int B[3] = {1, 2, 3};
+	printf("顺序表第十三题 \n");
+	printf("原顺序表A: ");
+	for (int i = 0; i < sizeof(A)/ sizeof(int); i++)
+		printf("%d ", A[i]);
+	printf("\n");
+	printf("原顺序表B: ");
+	for (int i = 0; i < sizeof(B)/ sizeof(int); i++)
+		printf("%d ", B[i]);
+	printf("\n");
+
+	int resultA = findMissMin(A, 3);
+	int resultB = findMissMin(B, 3);
+	printf("数组A最小正整数 %d\n", resultA);
+	printf("数组B最小正整数 %d\n", resultB);
 }
