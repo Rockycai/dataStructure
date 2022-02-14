@@ -24,6 +24,8 @@ int main(int argc, char **argv) {
 	list_example_11();
 	list_example_12();
 	list_example_13();
-	
+
+	testLinkList_1();
+
 	return 0;
 }

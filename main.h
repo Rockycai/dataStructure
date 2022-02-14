@@ -6,5 +6,6 @@
 #define MAIN_H
 
 #include "list/list.h"
+#include "LinkList/LinkList.h"
 
 #endif /* MAIN_H */

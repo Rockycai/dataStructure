@@ -633,4 +633,5 @@ void list_example_13() {
 	int resultB = findMissMin(B, 3);
 	printf("数组A最小正整数 %d\n", resultA);
 	printf("数组B最小正整数 %d\n", resultB);
+	printf("\n");
 }
