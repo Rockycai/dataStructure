@@ -14,6 +14,7 @@ typedef struct DNode {
 	struct DNode *prior, *next;
 } DNode, *DLinkList;
 
+// 单链表操作
 void InitLinkList(LinkList *L);
 int LinkListLength(LinkList L);
 bool LinkListInsert(LinkList L, int i, ElemType e);
@@ -22,6 +23,13 @@ LNode *GetLinkListLocaleElem(LinkList L, ElemType e);
 bool LinkListDelete(LinkList L, int i);
 void PrintLinkList(LinkList L);
 
+// 双链表操作
+void InitDLinkList(DLinkList *DL);
+bool DLinkListInsert(DLinkList DL, int i, ElemType e);
+bool DLinkListDelete(DLinkList DL, int i);
+void PrintDList(DLinkList DL);
+
 void testLinkList_1(void);
+void testLinkList_2(void);
 
 #endif /* LINKLIST_H */

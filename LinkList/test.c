@@ -23,3 +23,16 @@ void testLinkList_1() {
 
 	PrintLinkList(L);
 }
+
+void testLinkList_2() {
+	DLinkList DL;
+
+	InitDLinkList(&DL);
+	DLinkListInsert(DL, 1, 100);
+	DLinkListInsert(DL, 2, 200);
+	DLinkListInsert(DL, 3, 300);
+	PrintDList(DL);
+
+	DLinkListDelete(DL, 2);
+	PrintDList(DL);
+}
