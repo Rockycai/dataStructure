@@ -25,8 +25,10 @@ int main(int argc, char **argv) {
 	list_example_12();
 	list_example_13();
 
-	testLinkList_1();
-	testLinkList_2();
+	// testLinkList_1();
+	// testLinkList_2();
+
+	LinkList_example_01();
 
 	return 0;
 }

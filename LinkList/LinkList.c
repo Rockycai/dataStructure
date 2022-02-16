@@ -109,5 +109,5 @@ void PrintLinkList(LinkList L) {
 		p = p->next;
 		printf("%d ", p->data);
 	}
-	printf("\n\n");
+	printf("\n");
 }

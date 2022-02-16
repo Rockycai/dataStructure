@@ -32,4 +32,6 @@ void PrintDList(DLinkList DL);
 void testLinkList_1(void);
 void testLinkList_2(void);
 
+void LinkList_example_01(void);
+
 #endif /* LINKLIST_H */
