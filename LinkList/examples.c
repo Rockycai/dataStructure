@@ -95,3 +95,38 @@ void LinkList_example_02() {
 	PrintLinkList(L);
 	printf("\n");
 }
+
+// ----------------------------------------------------------------
+/** 
+ * 第三题
+ * 设L为带头结点的单链表，编写算法实现从尾到头反向输出每个结点的值
+ */
+
+void Print_R(LinkList L) {
+	if (L->next != NULL) 
+	{
+		Print_R(L->next);
+	}
+
+	if (L != NULL)
+		printf("%d ", L->data);
+}
+
+void LinkList_example_03() {
+	LinkList L;
+
+	InitLinkList(&L);
+	LinkListInsert(L, 1, 100);
+	LinkListInsert(L, 2, 200);
+	LinkListInsert(L, 3, 300);
+	LinkListInsert(L, 4, 400);
+	LinkListInsert(L, 5, 500);
+
+	printf("链表第三题\n");
+	printf("原-链表元素为: ");
+	PrintLinkList(L);
+	printf("后-链表元素为: ");
+	// 这里是带头结点，所以要把头节点去掉
+	Print_R(L->next);
+	printf("\n");
+}

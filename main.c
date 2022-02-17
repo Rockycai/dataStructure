@@ -30,6 +30,7 @@ int main(int argc, char **argv) {
 
 	LinkList_example_01();
 	LinkList_example_02();
+	LinkList_example_03();
 
 	return 0;
 }
