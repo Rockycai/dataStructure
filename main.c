@@ -29,6 +29,7 @@ int main(int argc, char **argv) {
 	// testLinkList_2();
 
 	LinkList_example_01();
+	LinkList_example_02();
 
 	return 0;
 }

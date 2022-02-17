@@ -47,3 +47,51 @@ void LinkList_example_01() {
 	PrintLinkList(L);
 	printf("\n");
 }
+
+// ----------------------------------------------------------------
+/** 
+ * 第二题
+ * 在带头结点的单链表L中，删除所有值为x的结点，并释放其空间，假设值为x的结点
+ * 不唯一。
+ */
+
+void DeleteHeadLNodeXValues(LinkList *L, ElemType e) {
+	LinkList p = (*L)->next;
+	LinkList s = *L;
+	LinkList q;
+
+	while (p!= NULL)
+	{
+		if (p->data == e) 
+		{
+			q = p;
+			p = p->next;
+			s->next = p;
+			free(q);
+		}
+		else
+		{
+			s = p;
+			p = p->next;
+		}
+	}	
+}
+
+void LinkList_example_02() {
+	LinkList L;
+
+	InitLinkList(&L);
+	LinkListInsert(L, 1, 100);
+	LinkListInsert(L, 2, 200);
+	LinkListInsert(L, 3, 100);
+	LinkListInsert(L, 4, 300);
+	LinkListInsert(L, 5, 400);
+
+	printf("链表第二题\n");
+	printf("原-链表元素为: ");
+	PrintLinkList(L);
+	printf("后-链表元素为: ");
+	DeleteHeadLNodeXValues(&L, 100);
+	PrintLinkList(L);
+	printf("\n");
+}
