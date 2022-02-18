@@ -128,5 +128,51 @@ void LinkList_example_03() {
 	printf("后-链表元素为: ");
 	// 这里是带头结点，所以要把头节点去掉
 	Print_R(L->next);
-	printf("\n");
+	printf("\n\n");
+}
+
+// ----------------------------------------------------------------
+/** 
+ * 第四题
+ * 带头结点的单链表L中删除一个最小值结点的高效算法（假设最小值结点是唯一的）
+ */
+
+void DeleteLinkListMinValue(LinkList *L) {
+	LNode *pre = *L;
+	LNode *p = (*L)->next;
+	LNode *minpre = *L;
+	LNode *min = (*L)->next;
+
+	while (p!= NULL)
+	{
+		if (p->data < min->data)
+		{
+			min = p;
+			minpre = pre;
+		}
+		pre = p;
+		p = p->next;
+	}
+
+	minpre->next = min->next;
+	free(min);
+}
+
+void LinkList_example_04() {
+	LinkList L;
+
+	InitLinkList(&L);
+	LinkListInsert(L, 1, 200);
+	LinkListInsert(L, 2, 400);
+	LinkListInsert(L, 3, 500);
+	LinkListInsert(L, 4, 100);
+	LinkListInsert(L, 5, 300);
+
+	printf("链表第四题\n");
+	printf("原-链表元素为: ");
+	PrintLinkList(L);
+	printf("后-链表元素为: ");
+	DeleteLinkListMinValue(&L);
+	PrintLinkList(L);
+	printf("\n\n");
 }
