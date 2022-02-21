@@ -183,7 +183,7 @@ void LinkList_example_04() {
  * 带头结点的单链表就地置逆（就是辅助空间复杂度为O(1)）
  */
 
-void ReverseLinkList(LinkList *L) {
+void ReverseLinkList_1(LinkList *L) {
 	LNode *p, *r;
 	p = (*L)->next;
 	(*L)->next = NULL;
@@ -195,6 +195,22 @@ void ReverseLinkList(LinkList *L) {
 		(*L)->next = p;
 		p = r;
 	}
+}
+
+void ReverseLinkList_2(LinkList *L)
+{
+	LNode *pre, *p = (*L)->next, *r = p->next;
+	p->next = NULL;
+
+	while(r)
+	{
+		pre = p;
+		p = r;
+		r = r->next;
+		p->next = pre;
+	}
+
+	(*L)->next = p;
 }
 
 void LinkList_example_05() {
@@ -210,8 +226,11 @@ void LinkList_example_05() {
 	printf("链表第五题\n");
 	printf("原-链表元素为: ");
 	PrintLinkList(L);
-	printf("后-链表元素为: ");
-	ReverseLinkList(&L);
+	printf("1后-链表元素为: ");
+	ReverseLinkList_1(&L);
+	PrintLinkList(L);
+	printf("2后-链表元素为: ");
+	ReverseLinkList_2(&L);
 	PrintLinkList(L);
 	printf("\n\n");
 }
