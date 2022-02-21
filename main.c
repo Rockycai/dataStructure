@@ -32,6 +32,7 @@ int main(int argc, char **argv) {
 	LinkList_example_02();
 	LinkList_example_03();
 	LinkList_example_04();
+	LinkList_example_05();
 
 	return 0;
 }
