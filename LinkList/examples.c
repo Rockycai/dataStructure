@@ -234,3 +234,49 @@ void LinkList_example_05() {
 	PrintLinkList(L);
 	printf("\n\n");
 }
+
+// ----------------------------------------------------------------
+/** 
+ * 第六题
+ * 有一个带头结点的单链表L，设计一个算法使其元素递增有序
+ */
+
+void sortLinkList(LinkList *L) {
+	LNode *p = (*L)->next;
+	LNode *pre;
+	LNode *r = p->next;
+	p->next = NULL;
+	p = r;
+
+	while (p) 
+	{
+		r = p->next;
+		pre = *L;
+		while ((pre->next) && (pre->next->data < p->data))
+		{
+			pre = pre->next;
+		}
+		p->next = pre->next;
+		pre->next = p;
+		p = r;
+	}
+}
+
+void LinkList_example_06() {
+	LinkList L;
+
+	InitLinkList(&L);
+	LinkListInsert(L, 1, 200);
+	LinkListInsert(L, 2, 100);
+	LinkListInsert(L, 3, 300);
+	LinkListInsert(L, 4, 500);
+	LinkListInsert(L, 5, 400);
+
+	printf("链表第六题\n");
+	printf("原-链表元素为: ");
+	PrintLinkList(L);
+	printf("后-链表元素为: ");
+	sortLinkList(&L);
+	PrintLinkList(L);
+	printf("\n\n");
+}
