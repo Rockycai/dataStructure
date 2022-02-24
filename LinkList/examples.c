@@ -56,9 +56,9 @@ void LinkList_example_01() {
  */
 
 void DeleteHeadLNodeXValues(LinkList *L, ElemType e) {
-	LinkList p = (*L)->next;
-	LinkList s = *L;
-	LinkList q;
+	LNode *p = (*L)->next;
+	LNode *s = *L;
+	LNode *q;
 
 	while (p)
 	{
@@ -103,12 +103,12 @@ void LinkList_example_02() {
  */
 
 void Print_R(LinkList L) {
-	if (L->next != NULL) 
+	if (L->next) 
 	{
 		Print_R(L->next);
 	}
 
-	if (L != NULL)
+	if (L)
 		printf("%d ", L->data);
 }
 
@@ -143,7 +143,7 @@ void DeleteLinkListMinValue(LinkList *L) {
 	LNode *minpre = *L;
 	LNode *min = (*L)->next;
 
-	while (p!= NULL)
+	while (p)
 	{
 		if (p->data < min->data)
 		{
