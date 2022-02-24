@@ -60,7 +60,7 @@ void DeleteHeadLNodeXValues(LinkList *L, ElemType e) {
 	LinkList s = *L;
 	LinkList q;
 
-	while (p!= NULL)
+	while (p)
 	{
 		if (p->data == e) 
 		{
@@ -280,3 +280,11 @@ void LinkList_example_06() {
 	PrintLinkList(L);
 	printf("\n\n");
 }
+
+
+// ----------------------------------------------------------------
+/** 
+ * 第七题
+ * 设在一个带表头结点的单链表中所有元素结点的数据值无序，试编写一个函数，删除
+ * 表中所有介于给定的两个值（作为函数参数给出）之间的元素的元素（若存在）
+ */
