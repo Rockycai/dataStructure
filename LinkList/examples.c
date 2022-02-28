@@ -288,3 +288,45 @@ void LinkList_example_06() {
  * 设在一个带表头结点的单链表中所有元素结点的数据值无序，试编写一个函数，删除
  * 表中所有介于给定的两个值（作为函数参数给出）之间的元素的元素（若存在）
  */
+
+void DeleteRangeValue(LinkList *L, ElemType S, ElemType T) {
+	LNode *p = (*L)->next;
+	LNode *pre = (*L);
+
+	while (p) 
+	{
+		if (p->data > S && p->data < T)
+		{
+			pre->next = p->next;
+			free(p);
+			p = pre->next;
+		}
+		else
+		{
+			pre = p;
+			p = p->next;
+		}
+	}
+}
+
+void LinkList_example_07() {
+	LinkList L;
+
+	InitLinkList(&L);
+	LinkListInsert(L, 1, 200);
+	LinkListInsert(L, 2, 100);
+	LinkListInsert(L, 3, 300);
+	LinkListInsert(L, 4, 500);
+	LinkListInsert(L, 5, 400);
+	LinkListInsert(L, 6, 600);
+	LinkListInsert(L, 7, 800);
+	LinkListInsert(L, 8, 700);
+
+	printf("链表第七题\n");
+	printf("原-链表元素为: ");
+	PrintLinkList(L);
+	printf("后-链表元素为: ");
+	DeleteRangeValue(&L, 300, 700);
+	PrintLinkList(L);
+	printf("\n\n");
+}
