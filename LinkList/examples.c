@@ -241,7 +241,7 @@ void LinkList_example_05() {
  * 有一个带头结点的单链表L，设计一个算法使其元素递增有序
  */
 
-void sortLinkList(LinkList *L) {
+void SortLinkList(LinkList *L) {
 	LNode *p = (*L)->next;
 	LNode *pre;
 	LNode *r = p->next;
@@ -276,7 +276,7 @@ void LinkList_example_06() {
 	printf("原-链表元素为: ");
 	PrintLinkList(L);
 	printf("后-链表元素为: ");
-	sortLinkList(&L);
+	SortLinkList(&L);
 	PrintLinkList(L);
 	printf("\n\n");
 }
