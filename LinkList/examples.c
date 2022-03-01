@@ -330,3 +330,61 @@ void LinkList_example_07() {
 	PrintLinkList(L);
 	printf("\n\n");
 }
+
+// ----------------------------------------------------------------
+/** 
+ * 第八题
+ * 给定两个单链表，编写算法找出两个链表的公共结点
+ */
+
+// TODO: 构造2个链表后还要把链在一起，暂时不做
+
+// ----------------------------------------------------------------
+/** 
+ * 第九题
+ * 给定一个带表头结点的单链表，设head为头指针，结点结构为(data,next),data
+ * 为整型元素，next为指针，试写算法：按递增次序输出单链表中各结点的数据元素，
+ * 并释放结点所占的存储空间 (要求：不允许使用数组作为辅助空间)
+ */
+
+void DeleteMinValueAndFree(LinkList *L) {
+	LNode *head = (*L);
+	LNode *p = (*L)->next;
+	LNode *pre, *u;
+
+	while (head->next) 
+	{
+		pre = head;
+		p = pre->next;
+
+		while (p->next)
+		{
+			if (p->next->data < pre->next->data)
+				pre = p;
+			p = p->next;
+		}
+		printf("%d ", pre->next->data);
+		u = pre->next;
+		pre->next = u->next;
+		free(u);
+	}
+	free(head);
+}
+
+void LinkList_example_09() {
+	LinkList L;
+
+	InitLinkList(&L);
+	LinkListInsert(L, 1, 200);
+	LinkListInsert(L, 2, 100);
+	LinkListInsert(L, 3, 300);
+	LinkListInsert(L, 4, 500);
+	LinkListInsert(L, 5, 400);
+
+	printf("链表第九题\n");
+	printf("原-链表元素为: ");
+	PrintLinkList(L);
+	printf("后-链表元素为: ");
+	DeleteMinValueAndFree(&L);
+	printf("\n\n");
+}
