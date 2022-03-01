@@ -349,8 +349,7 @@ void LinkList_example_07() {
 
 void DeleteMinValueAndFree(LinkList *L) {
 	LNode *head = (*L);
-	LNode *p = (*L)->next;
-	LNode *pre, *u;
+	LNode *p, *pre, *u;
 
 	while (head->next) 
 	{
