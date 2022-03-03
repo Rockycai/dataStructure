@@ -40,5 +40,6 @@ void LinkList_example_05(void);
 void LinkList_example_06(void);
 void LinkList_example_07(void);
 void LinkList_example_09(void);
+void LinkList_example_10(void);
 
 #endif /* LINKLIST_H */

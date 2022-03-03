@@ -387,3 +387,65 @@ void LinkList_example_09() {
 	DeleteMinValueAndFree(&L);
 	printf("\n\n");
 }
+
+// ----------------------------------------------------------------
+/** 
+ * 第十题
+ * 将一个带头结点的单链表A分解为两个带头结点的单链表A和B，使得A表中含有原表
+ * 中序号为奇数的元素，而B表中含有原表中序号为偶数的元素，且保持其相对顺序不
+ * 变
+ */
+
+LinkList DiscardLinkList(LinkList *L) {
+	int i = 0;
+	LinkList B = (LinkList)malloc(sizeof(LNode));
+	B->next = NULL;
+	LNode *ra = *L;
+	LNode *rb = B;
+	LNode *p = (*L)->next;
+
+	(*L)->next = NULL;
+
+	while (p)
+	{
+		i++;
+		if (i % 2 == 0)
+		{
+			rb->next = p;
+			rb = p;
+		}
+		else
+		{
+			ra->next = p;
+			ra = p;
+		}
+		p = p->next;
+	}
+	ra->next = NULL;
+	rb->next = NULL;
+
+	return B;
+}
+
+void LinkList_example_10() {
+	LinkList L;
+
+	InitLinkList(&L);
+	LinkListInsert(L, 1, 1);
+	LinkListInsert(L, 2, 2);
+	LinkListInsert(L, 3, 3);
+	LinkListInsert(L, 4, 4);
+	LinkListInsert(L, 5, 5);
+	LinkListInsert(L, 6, 6);
+	LinkListInsert(L, 7, 7);
+	LinkListInsert(L, 8, 8);
+
+	printf("链表第十题\n");
+	printf("原-链表元素为: ");
+	PrintLinkList(L);
+	printf("1-链表元素为: ");
+	PrintLinkList(DiscardLinkList(&L));
+	printf("2-链表元素为: ");
+	PrintLinkList(L);
+	printf("\n\n");
+}
