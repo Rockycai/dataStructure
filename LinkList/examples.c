@@ -396,7 +396,7 @@ void LinkList_example_09() {
  * 变
  */
 
-LinkList DiscardLinkList(LinkList *L) {
+LinkList DiscardLinkList_1(LinkList *L) {
 	int i = 0;
 	LinkList B = (LinkList)malloc(sizeof(LNode));
 	B->next = NULL;
@@ -444,7 +444,60 @@ void LinkList_example_10() {
 	printf("原-链表元素为: ");
 	PrintLinkList(L);
 	printf("1-链表元素为: ");
-	PrintLinkList(DiscardLinkList(&L));
+	PrintLinkList(DiscardLinkList_1(&L));
+	printf("2-链表元素为: ");
+	PrintLinkList(L);
+	printf("\n\n");
+}
+
+// ----------------------------------------------------------------
+/** 
+ * 第十一题
+ * 设C={a1,b1,a2,b2,...,an,bn}为线性表，采用带头结点的hc单链表存放，设计
+ * 一个就地算法，将其拆分为2个线性表，使得A={a1,a2,...,an}, b={bn,...,b2,b1}
+ */
+
+LinkList DiscardLinkList_2(LinkList *L) {
+	LinkList B = (LinkList)malloc(sizeof(LNode));
+	B->next = NULL;
+	LNode *q;
+	LNode *p = (*L)->next;
+	LNode *ra = (*L);
+
+	while (p) 
+	{
+		ra->next = p;
+		ra = p;
+		p = p->next;
+
+		if (p)
+			q = p->next;
+		p->next = B->next;
+		B->next = p;
+		p = q;
+	}
+	ra->next = NULL;
+	return B;
+}
+
+void LinkList_example_11() {
+	LinkList L;
+
+	InitLinkList(&L);
+	LinkListInsert(L, 1, 1);
+	LinkListInsert(L, 2, 2);
+	LinkListInsert(L, 3, 3);
+	LinkListInsert(L, 4, 4);
+	LinkListInsert(L, 5, 5);
+	LinkListInsert(L, 6, 6);
+	LinkListInsert(L, 7, 7);
+	LinkListInsert(L, 8, 8);
+
+	printf("链表第十题\n");
+	printf("原-链表元素为: ");
+	PrintLinkList(L);
+	printf("1-链表元素为: ");
+	PrintLinkList(DiscardLinkList_1(&L));
 	printf("2-链表元素为: ");
 	PrintLinkList(L);
 	printf("\n\n");
