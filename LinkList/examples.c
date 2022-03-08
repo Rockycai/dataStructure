@@ -497,7 +497,7 @@ void LinkList_example_11() {
 	printf("原-链表元素为: ");
 	PrintLinkList(L);
 	printf("1-链表元素为: ");
-	PrintLinkList(DiscardLinkList_1(&L));
+	PrintLinkList(DiscardLinkList_2(&L));
 	printf("2-链表元素为: ");
 	PrintLinkList(L);
 	printf("\n\n");
