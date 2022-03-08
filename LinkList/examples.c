@@ -493,12 +493,63 @@ void LinkList_example_11() {
 	LinkListInsert(L, 7, 7);
 	LinkListInsert(L, 8, 8);
 
-	printf("链表第十题\n");
+	printf("链表第十一题\n");
 	printf("原-链表元素为: ");
 	PrintLinkList(L);
 	printf("1-链表元素为: ");
 	PrintLinkList(DiscardLinkList_2(&L));
 	printf("2-链表元素为: ");
+	PrintLinkList(L);
+	printf("\n\n");
+}
+
+// ----------------------------------------------------------------
+/** 
+ * 第十二题
+ * 在一个递增有序的线性表中，有数值相同的元素存在。若存储方式为单链表，设计算法
+ * 去掉数值相同的元素，使表中不再有重复的元素，例如（7,10,10,21,30,42,42,42
+ * ,51,70）将变为（7，10，21，30，42，51，70）
+ */
+
+void DeleteLinkDuplicateValue(LinkList *L) {
+	LNode *p = (*L)->next;
+	LNode *q = (*L);
+
+	while (p->next) 
+	{
+		q = p->next;
+		if (p->data == q->data) 
+		{
+			p->next = q->next;
+			free(q);
+		}
+		else
+		{
+			p = p->next;
+		}
+	}
+}
+
+void LinkList_example_12() {
+	LinkList L;
+
+	InitLinkList(&L);
+	LinkListInsert(L, 1, 7);
+	LinkListInsert(L, 2, 10);
+	LinkListInsert(L, 3, 10);
+	LinkListInsert(L, 4, 21);
+	LinkListInsert(L, 5, 30);
+	LinkListInsert(L, 6, 42);
+	LinkListInsert(L, 7, 42);
+	LinkListInsert(L, 8, 42);
+	LinkListInsert(L, 9, 51);
+	LinkListInsert(L, 10, 70);
+
+	printf("链表第十二题\n");
+	printf("原-链表元素为: ");
+	PrintLinkList(L);
+	printf("链表元素为: ");
+	DeleteLinkDuplicateValue(&L);
 	PrintLinkList(L);
 	printf("\n\n");
 }
