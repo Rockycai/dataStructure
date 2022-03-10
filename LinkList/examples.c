@@ -553,3 +553,76 @@ void LinkList_example_12() {
 	PrintLinkList(L);
 	printf("\n\n");
 }
+
+// ----------------------------------------------------------------
+/** 
+ * 第十三题
+ * 假设有两个按元素值递增次序排列的线性表，均以单链表形式存储。请编写算法将这两个
+ * 单链表归并为一个按元素值递减次序排列的单链表，并要求利用原来两个单链表的结点
+ * 存放归并后的单链表
+ */
+
+void MergeList(LinkList *La, LinkList *Lb) {
+	LNode *r, *pa = (*La)->next, *pb = (*Lb)->next;
+	(*La)->next = NULL;
+
+	while (pa && pb)
+	{
+		if (pa->data <= pb->data) 
+		{
+			r = pa->next;
+			pa->next = (*La)->next;
+			(*La)->next = pa;
+			pa = r;
+		}
+		else
+		{
+			r = pb->next;
+			pb->next = (*La)->next;
+			(*La)->next = pb;
+			pb = r;
+		}
+	}
+
+	if (pa)
+		pb = pa;
+
+	while (pb)
+	{
+		r = pb->next;
+		pb->next = (*La)->next;
+		(*La)->next = pb;
+		pb = r;
+	}
+
+	free(*Lb);
+}
+
+void LinkList_example_13() {
+	LinkList La, Lb;
+	InitLinkList(&La);
+	InitLinkList(&Lb);
+
+	LinkListInsert(La, 1, 1);
+	LinkListInsert(La, 2, 3);
+	LinkListInsert(La, 3, 5);
+	LinkListInsert(La, 4, 7);
+	LinkListInsert(La, 5, 9);
+
+	LinkListInsert(Lb, 1, 2);
+	LinkListInsert(Lb, 2, 4);
+	LinkListInsert(Lb, 3, 6);
+	LinkListInsert(Lb, 4, 8);
+	LinkListInsert(Lb, 5, 10);
+
+	printf("链表第十三题\n");
+	printf("1-链表元素为: ");
+	PrintLinkList(La);
+	printf("2-链表元素为: ");
+	PrintLinkList(Lb);
+	printf("合并后链表为: ");
+	MergeList(&La, &Lb);
+	PrintLinkList(La);
+
+	printf("\n\n");
+}
