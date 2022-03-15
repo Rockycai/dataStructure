@@ -7,5 +7,6 @@
 
 #include "list/list.h"
 #include "LinkList/LinkList.h"
+#include "stack/stack.h"
 
 #endif /* MAIN_H */
