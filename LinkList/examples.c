@@ -562,7 +562,7 @@ void LinkList_example_12() {
  * 存放归并后的单链表
  */
 
-void MergeList(LinkList *La, LinkList *Lb) {
+void MergeLinkList(LinkList *La, LinkList *Lb) {
 	LNode *r, *pa = (*La)->next, *pb = (*Lb)->next;
 	(*La)->next = NULL;
 
@@ -621,7 +621,7 @@ void LinkList_example_13() {
 	printf("2-链表元素为: ");
 	PrintLinkList(Lb);
 	printf("合并后链表为: ");
-	MergeList(&La, &Lb);
+	MergeLinkList(&La, &Lb);
 	PrintLinkList(La);
 
 	printf("\n\n");
@@ -633,3 +633,57 @@ void LinkList_example_13() {
  * 设A和B是两个单链表（带头结点）,其中元素递增有序。设计一个算法从A和B中的公
  * 共元素产生单链表C，要求不破坏A，B的结点。
  */
+
+LinkList MergeCommon(LinkList A, LinkList B) {
+	LNode *p = A->next;
+	LNode *q = B->next;
+	LNode *r, *s;
+
+	LinkList C = (LinkList)malloc(sizeof(LNode));
+	r = C;
+
+	while (p && q) {
+		if (p->data < q->data) {
+			p = p->next;
+		} else if (p->data > q->data) {
+			q = q->next;
+		} else {
+			s = (LNode *)malloc(sizeof(LNode));
+			s->data = p->data;
+			r->next = s;
+			r = s;
+			p = p->next;
+			q = q->next;
+		}
+	}
+	r->next = NULL;
+	return C;
+}
+
+void LinkList_example_14() {
+	LinkList La, Lb;
+	InitLinkList(&La);
+	InitLinkList(&Lb);
+
+	LinkListInsert(La, 1, 1);
+	LinkListInsert(La, 2, 2);
+	LinkListInsert(La, 3, 5);
+	LinkListInsert(La, 4, 8);
+	LinkListInsert(La, 5, 9);
+
+	LinkListInsert(Lb, 1, 2);
+	LinkListInsert(Lb, 2, 4);
+	LinkListInsert(Lb, 3, 6);
+	LinkListInsert(Lb, 4, 8);
+	LinkListInsert(Lb, 5, 10);
+
+	printf("链表第十四题\n");
+	printf("1-链表元素为: ");
+	PrintLinkList(La);
+	printf("2-链表元素为: ");
+	PrintLinkList(Lb);
+	printf("合并后链表为: ");
+	PrintLinkList(MergeCommon(La,Lb));
+
+	printf("\n\n");
+}

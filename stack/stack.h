@@ -7,6 +7,11 @@
 
 #include "../header.h"
 
+typedef struct LinkNode {
+	ElemType data;
+	struct LinkNode *next;
+} *LiStack;
+
 typedef struct SqStack {
 	ElemType data[MAXSIZE];
 	int top;
